@@ -45,7 +45,7 @@ namespace View.Controllers
         public JsonResult Apagar(int id)
         {
             var apagou = repository.Apagar(id);
-            var resultado = new { status = apagou};
+            var resultado = new { status = apagou };
             return Json(resultado, JsonRequestBehavior.AllowGet);
         }
 
@@ -61,6 +61,29 @@ namespace View.Controllers
         public JsonResult ObterPeloId(int id)
         {
             return Json(repository.ObterPeloId(id), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet, Route("pessoa/obtertodosselect2")]
+        public JsonResult ObterTodosSelect2(string term)
+        {
+            var pessoas = repository.ObterTodos();
+
+            List<object> pessoasSelect2 =
+                new List<object>();
+            foreach (Pessoa pessoa in pessoas)
+            {
+                pessoasSelect2.Add(new
+                {
+                    id = pessoa.Id,
+                    text = pessoa.Nome
+                });
+            }
+            var resultado = new
+            {
+                results = pessoasSelect2
+            };
+            return Json(resultado, JsonRequestBehavior.AllowGet);
+
         }
     }
 
