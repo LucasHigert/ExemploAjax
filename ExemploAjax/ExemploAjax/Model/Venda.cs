@@ -14,10 +14,10 @@ namespace Model
         [Key, Column("id")]
         public int Id { get; set; }
 
-        [Column("id_cliente")]
+        [Column("id_venda")]
         public int IdCliente { get; set; }
 
-        [ForeignKey("idCliente")]
+        [ForeignKey("idVenda")]
         public Pessoa Cliente { get; set; }
 
         [Column("descricao")]
