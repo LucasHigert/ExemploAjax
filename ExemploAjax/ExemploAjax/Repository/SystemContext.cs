@@ -8,10 +8,17 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-   public class SistemaContext: DbContext
+    public class SystemContext : DbContext
     {
-        public SistemaContext(): base("SqlServerConnection")
-        { }
+        public SystemContext() : base("SqlServerConnection")
+        {
+        }
+
         public DbSet<Pessoa> Pessoas { get; set; }
+
+
+
+
+
     }
 }

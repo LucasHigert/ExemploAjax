@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace Model
 {
     [Table("pessoas")]
-
     public class Pessoa
     {
         [Key, Column("id")]

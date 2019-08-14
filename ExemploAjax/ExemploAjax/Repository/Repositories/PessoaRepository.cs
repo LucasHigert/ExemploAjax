@@ -10,15 +10,15 @@ namespace Repository.Repositories
 {
     public class PessoaRepository : IPessoaRepository
     {
-        private SistemaContext context;
+        private SystemContext context;
         public PessoaRepository()
         {
-            context = new SistemaContext();
+            context = new SystemContext();
         }
 
         public bool Alterar(Pessoa pessoa)
         {
-            var pessoaOriginal = context.Pessoas.Where(x => x.Id == pessoa.Id).FirstOrDefault();
+            var pessoaOriginal = context.Pessoas.FirstOrDefault(x => x.Id == pessoa.Id);
 
             if (pessoaOriginal == null)
                 return false;
@@ -32,12 +32,22 @@ namespace Repository.Repositories
         public bool Apagar(int id)
         {
             var pessoa = context.Pessoas.FirstOrDefault(x => x.Id == id);
-            if (pessoa == null)
+            //Caso específico em que somente a linha abaixo do if/else pertence à condiição
+            /*if (pessoa == null)
                 return false;
 
             pessoa.RegistroAtivo = false;
-            int quantidadeAfetada =
-            context.SaveChanges();
+            int quantidadeAfetada = context.SaveChanges();
+
+            return quantidadeAfetada == 1;*/
+
+            if (pessoa == null)
+            {
+                return false;
+            }
+
+            pessoa.RegistroAtivo = false;
+            int quantidadeAfetada = context.SaveChanges();
 
             return quantidadeAfetada == 1;
 
@@ -48,21 +58,17 @@ namespace Repository.Repositories
             context.Pessoas.Add(pessoa);
             context.SaveChanges();
             return pessoa.Id;
-
         }
 
         public Pessoa ObterPeloId(int id)
         {
-            var pessoa = context.Pessoas.Where(x => x.Id == id).FirstOrDefault();
+            var pessoa = context.Pessoas.FirstOrDefault(x => x.Id == id);
             return pessoa;
         }
 
         public List<Pessoa> ObterTodos()
-        {   //SELECT*FROM pessoas
-            //WHERE registro_ativo=true
-            //ORDER BY nome;
-
-            return context.Pessoas.Where(x => x.RegistroAtivo == true).OrderBy(x => x.Nome).ToList();
+        {
+            return context.Pessoas.Where(x => x.RegistroAtivo == true).OrderBy(x => x.Id).ToList();
         }
     }
 }

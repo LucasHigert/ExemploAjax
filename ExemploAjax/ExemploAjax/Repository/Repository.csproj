@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{434B241C-BD7F-450A-BE14-EEB283E92AF0}</ProjectGuid>
+    <ProjectGuid>{69E52A68-8C1A-4DF4-957A-F6EE36C28B64}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Repository</RootNamespace>
@@ -51,7 +51,7 @@
     <Compile Include="Interfaces\IPessoaRepository.cs" />
     <Compile Include="Repositories\PessoaRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SistemaContext.cs" />
+    <Compile Include="SystemContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -59,12 +59,13 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{760737a5-80a2-4a74-a798-4e69d540b75b}</Project>
+      <Project>{616cf6ad-e230-40c5-a426-7bbf1401cd1b}</Project>
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Content Include="BancoDados\Estrutura.Sql" />
+    <Content Include="BancoDados\estrutura.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
