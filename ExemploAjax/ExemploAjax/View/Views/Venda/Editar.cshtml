@@ -13,7 +13,12 @@
                 <label id="venda-cliente">Cliente</label>
                 <select class="form-control"
                         id="venda-cliente"
-                        name="idCliente"></select>
+                        name="idCliente">
+                    <option
+                            value="@ViewBag.Venda.IdCliente"
+                            selected="selected"
+                            >@ViewBag.Venda.Cliente.Nome</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="venda-descricao">Descrição</label>

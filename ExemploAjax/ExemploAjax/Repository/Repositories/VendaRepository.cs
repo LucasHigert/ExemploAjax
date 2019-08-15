@@ -50,7 +50,10 @@ namespace Repository.Repositories
 
         public Venda ObterPeloId(int id)
         {
-            return context.Vendas.FirstOrDefault(x => x.Id == id);
+            return context.Vendas
+                //Inner join ( venda ta atrelada a um cliente)
+                .Include("Cliente")
+                .FirstOrDefault(x => x.Id == id);
         }
 
         public List<Venda> ObterTodos()
