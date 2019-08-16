@@ -15,7 +15,7 @@ namespace View.Controllers
         {
             repository = new ProdutoRepository();
         }
-        [HttpGet,Route("obtertodospeloidvenda")]
+        [HttpGet, Route("obtertodospeloidvenda")]
         public JsonResult
             ObterTodosPeloIdVenda(int idVenda)
         {
@@ -24,7 +24,7 @@ namespace View.Controllers
             return Json(resultado, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet,Route("obterpeloid")]
+        [HttpGet, Route("obterpeloid")]
         public ActionResult ObterPeloId(int id)
         {
             var produto = repository.ObterPeloId(id);
@@ -34,7 +34,7 @@ namespace View.Controllers
             return Json(produto, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet,Route("cadastro")]
+        [HttpPost, Route("cadastro")]
         public JsonResult Cadastro(Produto produto)
 
         {
@@ -44,14 +44,14 @@ namespace View.Controllers
 
         }
 
-        [HttpPost,Route("alterar")]
+        [HttpPost, Route("alterar")]
         public JsonResult Alterar(Produto produto)
         {
             var alterou = repository.Alterar(produto);
             var resultado = new { status = alterou };
             return Json(resultado, JsonRequestBehavior.AllowGet);
         }
-        [HttpGet,Route("aoagar")]
+        [HttpGet, Route("aoagar")]
         public JsonResult Apagar(int id)
         {
             var apagou = repository.Apagar(id);

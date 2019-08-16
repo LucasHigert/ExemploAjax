@@ -43,5 +43,5 @@ INSERT INTO produtos(id_venda,quantidade,valor,registro_ativo,nome) VALUES
 (2,20,10000.00,1,'Pão de queijo');
 
 
-SELECT*FROM pessoas;
+SELECT*FROM vendas;
 
