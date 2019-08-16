@@ -1,7 +1,9 @@
 ﻿$(function () {
+    $idVenda = $("#id").val();
+
     $tabela =
         $("#venda-produtos-index").DataTable({
-            ajax: "/",
+            ajax: "/produto/obtertodospeloidvenda?idVenda="+$idVenda,
             ServerSide: true,
             columns: [
                 { data: "nome" },
